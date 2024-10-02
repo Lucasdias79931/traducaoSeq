@@ -31,20 +31,31 @@ def getSeq(sequenceWhay: str) -> list:
 
 
 # Extrai a fita complementar, inversa
-def getComplement(sequence: dict)->dict:
+def getComplement(sequence: dict) -> dict:
     seq = next(iter(sequence.items()))
-    complement = ""
+    complement_map = {
+        "A": "T",
+        "T": "A",
+        "G": "C",
+        "C": "G"
+    }
     
-    for nucleotides in seq[1]:
-        if nucleotides == "A":
-            complement += "T"
-        elif nucleotides == "T":
-            complement += "A"
-        elif nucleotides == "G":
-            complement += "C"
-        elif nucleotides == "C":
-            complement += "G"
+    complement = []
     
-    return {seq[0]:complement[::-1]}
+    for nucleotide in seq[1]:
+        complement.append(complement_map[nucleotide])
+    
+    return {seq[0]: ''.join(complement[::-1])}
 
+
+## Testes 
+if __name__ == "__main__":
+    allSeq = getSeq(sequenceWhay)
+
+    seqeunce = allSeq[0]
+
+    complemento = getComplement(seqeunce)
+
+    print(f"sequencia:{seqeunce}")
+    print(f"complemento:{complemento}")
 
