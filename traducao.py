@@ -1,10 +1,4 @@
 import os
-import numpy as np
-
-
-base_directory = os.getcwd()
-
-sequenceWhay = os.path.join(base_directory, "test/sequencias.fasta")
 
 # Extrai todas as sequencias de um arquivo
 def getSeq(sequenceWhay: str) -> list:
@@ -23,6 +17,8 @@ def getSeq(sequenceWhay: str) -> list:
 
                 if sequenceName and sequence:
                     sequences.append({sequenceName:sequence})
+                    sequenceName = ""
+                    sequence = ""
         
         return sequences
         
@@ -31,8 +27,8 @@ def getSeq(sequenceWhay: str) -> list:
 
 
 # Extrai a fita complementar, inversa
-def getComplement(sequence: dict) -> dict:
-    seq = next(iter(sequence.items()))
+def getComplement(sequence: str) -> str:
+    
     complement_map = {
         "A": "T",
         "T": "A",
@@ -42,80 +38,13 @@ def getComplement(sequence: dict) -> dict:
     
     complement = []
     
-    for nucleotide in seq[1]:
+    for nucleotide in sequence:
         complement.append(complement_map[nucleotide])
     
-    return {seq[0]: ''.join(complement[::-1])}
+    return ''.join(complement[::-1])
 
 
-tableCodons = {
-    "GCT": "Alanina",
-    "GCC": "Alanina",
-    "GCA": "Alanina",
-    "GCG": "Alanina",
-    "TGT": "Cisteína",
-    "TGC": "Cisteína",
-    "GAT": "Ácido aspártico",
-    "GAC": "Ácido aspártico",
-    "GAA": "Ácido glutâmico",
-    "GAG": "Ácido glutâmico",
-    "TTT": "Fenilalanina",
-    "TTC": "Fenilalanina",
-    "GGT": "Glicina",
-    "GGC": "Glicina",
-    "GGA": "Glicina",
-    "GGG": "Glicina",
-    "CAT": "Histidina",
-    "CAC": "Histidina",
-    "ATT": "Isoleucina",
-    "ATC": "Isoleucina",
-    "ATA": "Isoleucina",
-    "TTA": "Leucina",
-    "TTG": "Leucina",
-    "CTT": "Leucina",
-    "CTC": "Leucina",
-    "CTA": "Leucina",
-    "CTG": "Leucina",
-    "AAA": "Lisina",
-    "AAG": "Lisina",
-    "ATG": "Metionina",
-    "AAT": "Asparagina",
-    "AAC": "Asparagina",
-    "CCT": "Prolina",
-    "CCC": "Prolina",
-    "CCA": "Prolina",
-    "CCG": "Prolina",
-    "CAA": "Glutamina",
-    "CAG": "Glutamina",
-    "CGT": "Arginina",
-    "CGC": "Arginina",
-    "CGA": "Arginina",
-    "CGG": "Arginina",
-    "AGA": "Arginina",
-    "AGG": "Arginina",
-    "TCT": "Serina",
-    "TCC": "Serina",
-    "TCA": "Serina",
-    "TCG": "Serina",
-    "AGT": "Serina",
-    "AGC": "Serina",
-    "ACT": "Treonina",
-    "ACC": "Treonina",
-    "ACA": "Treonina",
-    "ACG": "Treonina",
-    "GTT": "Valina",
-    "GTC": "Valina",
-    "GTA": "Valina",
-    "GTG": "Valina",
-    "TGG": "Triptofano",
-    "TAT": "Tirosina",
-    "TAC": "Tirosina",
-    "TAA": "Stop",
-    "TAG": "Stop",
-    "TGA": "Stop",
-}
 
-  
 
 
 def traduction(sequence: str, tableCodons: dict) -> str:
@@ -138,16 +67,116 @@ def traduction(sequence: str, tableCodons: dict) -> str:
 
 
 
-
-## Testes 
-if __name__ == "__main__":
     
-    print(traduction("GCATGAATGTAG",tableCodons))
-    """"
-    seqeunce = allSeq[0]
 
-    complemento = getComplement(seqeunce)
 
-    print(f"sequencia:{seqeunce}")
-    print(f"complemento:{complemento}")
-"""
+
+## EXECUTAR ##
+
+tableCodons = {
+    "GCT": "A",  # Alanina
+    "GCC": "A",  # Alanina
+    "GCA": "A",  # Alanina
+    "GCG": "A",  # Alanina
+    "TGT": "C",  # Cisteína
+    "TGC": "C",  # Cisteína
+    "GAT": "D",  # Ácido aspártico
+    "GAC": "D",  # Ácido aspártico
+    "GAA": "E",  # Ácido glutâmico
+    "GAG": "E",  # Ácido glutâmico
+    "TTT": "F",  # Fenilalanina
+    "TTC": "F",  # Fenilalanina
+    "GGT": "G",  # Glicina
+    "GGC": "G",  # Glicina
+    "GGA": "G",  # Glicina
+    "GGG": "G",  # Glicina
+    "CAT": "H",  # Histidina
+    "CAC": "H",  # Histidina
+    "ATT": "I",  # Isoleucina
+    "ATC": "I",  # Isoleucina
+    "ATA": "I",  # Isoleucina
+    "TTA": "L",  # Leucina
+    "TTG": "L",  # Leucina
+    "CTT": "L",  # Leucina
+    "CTC": "L",  # Leucina
+    "CTA": "L",  # Leucina
+    "CTG": "L",  # Leucina
+    "AAA": "K",  # Lisina
+    "AAG": "K",  # Lisina
+    "ATG": "M",  # Metionina
+    "AAT": "N",  # Asparagina
+    "AAC": "N",  # Asparagina
+    "CCT": "P",  # Prolina
+    "CCC": "P",  # Prolina
+    "CCA": "P",  # Prolina
+    "CCG": "P",  # Prolina
+    "CAA": "Q",  # Glutamina
+    "CAG": "Q",  # Glutamina
+    "CGT": "R",  # Arginina
+    "CGC": "R",  # Arginina
+    "CGA": "R",  # Arginina
+    "CGG": "R",  # Arginina
+    "AGA": "R",  # Arginina
+    "AGG": "R",  # Arginina
+    "TCT": "S",  # Serina
+    "TCC": "S",  # Serina
+    "TCA": "S",  # Serina
+    "TCG": "S",  # Serina
+    "AGT": "S",  # Serina
+    "AGC": "S",  # Serina
+    "ACT": "T",  # Treonina
+    "ACC": "T",  # Treonina
+    "ACA": "T",  # Treonina
+    "ACG": "T",  # Treonina
+    "GTT": "V",  # Valina
+    "GTC": "V",  # Valina
+    "GTA": "V",  # Valina
+    "GTG": "V",  # Valina
+    "TGG": "W",  # Triptofano
+    "TAT": "Y",  # Tirosina
+    "TAC": "Y",  # Tirosina
+    "TAA": "*",  # Stop
+    "TAG": "*",  # Stop
+    "TGA": "*",  # Stop
+}
+
+base_directory = os.getcwd()
+
+sequenceWhay = os.path.join(base_directory, "test/sequencias.fasta")
+
+allSequence = getSeq(sequenceWhay)
+
+for i in range(len(allSequence)):
+    
+    sequenceName, sequence = next(iter(allSequence[i].items()))
+    complement = getComplement(sequence)
+    
+    print(f"{i + 1}. {sequenceName}: {sequence}\n")
+    for j in range(3):
+        print(f"Frame +{j + 1} (Sentido direto):")
+        print("DNA: ", end= " ")
+        for bases in range(j, len(sequence),3):
+            codon = sequence[bases:bases + 3]
+            print(f"{codon}", end= " ") 
+
+        # passa sequence a partir do index j usando [j:]
+        sequenceTrans = traduction(sequence[j:],tableCodons)
+
+        print(f"\n\nTradução: {sequenceTrans}\n")
+    
+    
+    print(f"Fita complementar (inversa e complementada): {complement}\n")
+    for j in range(3):
+        print(f"Frame +{j + 1} (Sentido direto):")
+        print("DNA: ", end= " ")
+        for bases in range(j, len(complement),3):
+            codon = complement[bases:bases + 3]
+            print(f"{codon}", end= " ") 
+
+        # passa sequence a partir do index j usando [j:]
+        complementTrans = traduction(complement[j:],tableCodons)
+
+        print(f"\n\nTradução: {complementTrans}\n")
+    
+    
+
