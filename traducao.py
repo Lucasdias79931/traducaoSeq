@@ -24,6 +24,7 @@ def getSeq(sequenceWhay: str) -> list:
         
     except Exception as e:
         print(f"Erro: {e}")
+        return []
 
 
 # Extrai a fita complementar, inversa
