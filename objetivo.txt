@@ -139,6 +139,6 @@ DNA: CTA ACA TGC CGT A
 
 Tradução: L-T-C-R
 
-Considerações Adicionais:
+Considerações Adicionais:                                               
 Atenção aos códons de parada: Nas traduções, marque os códons de parada (TAA, TAG, TGA) para indicar onde a tradução foi interrompida.
 Verifique a fita complementar: Lembre-se de inverter e complementar corretamente a sequência original para obter os frames de -1 a -3.
