@@ -1,0 +1,93 @@
+1. Sequência 1: ATGCATGAATGTAG
+Frame +1 (Sentido direto):
+DNA: ATG CAT GAA TGT AG 
+
+Tradução: M-H-E-C
+
+Frame +2 (Sentido direto):
+DNA: TGC ATG AAT GTA G 
+
+Tradução: C-M-N-V
+
+Frame +3 (Sentido direto):
+DNA: GCA TGA ATG TAG 
+
+Tradução: A-* (parada)-M-* (parada)
+
+Fita complementar (inversa e complementada): CTACATTCATGCAT
+
+Frame +1 (Sentido complementar):
+DNA: CTA CAT TCA TGC AT 
+
+Tradução: L-H-S-C
+Frame +2 (Sentido complementar):
+DNA: TAC ATT CAT GCA T 
+
+Tradução: Y-I-H-A
+Frame +3 (Sentido complementar):
+DNA: ACA TTC ATG CAT 
+
+Tradução: T-F-M-H
+
+2. Sequência 2: CGTACGCTAGCTAGC
+Frame +1 (Sentido direto):
+DNA: CGT ACG CTA GCT AGC 
+
+Tradução: R-T-L-A-S
+
+Frame +2 (Sentido direto):
+DNA: GTA CGC TAG CTA GC 
+
+Tradução: V-R-* (parada)-L
+
+Frame +3 (Sentido direto):
+DNA: TAC GCT AGC TAG C 
+
+Tradução: Y-A-S-* (parada)
+
+Fita complementar (inversa e complementada): GCTAGCTAGCGTACG
+
+Frame +1 (Sentido complementar):
+DNA: GCT AGC TAG CGT ACG 
+
+Tradução: A-S-* (parada)-R-T
+Frame +2 (Sentido complementar):
+DNA: CTA GCT AGC GTA CG 
+
+Tradução: L-A-S-V
+Frame +3 (Sentido complementar):
+DNA: TAG CTA GCG TAC G 
+
+Tradução: * (parada)-L-A-Y
+
+3. Sequência 3: TACGGCATGTTAGGA
+Frame +1 (Sentido direto):
+DNA: TAC GGC ATG TTA GGA 
+
+Tradução: Y-G-M-L-G
+
+Frame +2 (Sentido direto):
+DNA: ACG GCA TGT TAG GA 
+
+Tradução: T-A-C-* (parada)
+
+Frame +3 (Sentido direto):
+DNA: CGG CAT GTT AGG A 
+
+Tradução: R-H-V-R
+
+Fita complementar (inversa e complementada): TCCTAACATGCCGTA
+
+Frame +1 (Sentido complementar):
+DNA: TCC TAA CAT GCC GTA 
+
+Tradução: S-* (parada)-H-A-V
+Frame +2 (Sentido complementar):
+DNA: CCT AAC ATG CCG TA 
+
+Tradução: P-N-M-P
+Frame +3 (Sentido complementar):
+DNA: CTA ACA TGC CGT A 
+
+Tradução: L-T-C-R
+

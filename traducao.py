@@ -53,15 +53,18 @@ def traduction(sequence: str, tableCodons: dict) -> str:
     for i in range(0, len(sequence), 3):
         
         codon = sequence[i:i+3]
-        
+        # parada : (TAA, TAG, TGA)
+        #print(codon)
+
         if len(codon) == 3:  
             amino = tableCodons.get(codon, "")
             if amino == "Stop":
-                translated += "* (parada)-" 
+                translated += "* (parada)-"
+                #print(translated) 
                 
             else:
                 translated += amino + "-"  
-    
+        #print(translated)
     return translated.rstrip("-")  
 
 
@@ -135,48 +138,51 @@ tableCodons = {
     "TGG": "W",  # Triptofano
     "TAT": "Y",  # Tirosina
     "TAC": "Y",  # Tirosina
-    "TAA": "*",  # Stop
-    "TAG": "*",  # Stop
-    "TGA": "*",  # Stop
+    "TAA": "Stop",  # Stop
+    "TAG": "Stop",  # Stop
+    "TGA": "Stop",  # Stop
 }
 
 base_directory = os.getcwd()
 
 sequenceWhay = os.path.join(base_directory, "test/sequencias.fasta")
+Resultado = os.path.join(base_directory,"resultado.txt")
 
 allSequence = getSeq(sequenceWhay)
 
-for i in range(len(allSequence)):
-    
-    sequenceName, sequence = next(iter(allSequence[i].items()))
-    complement = getComplement(sequence)
-    
-    print(f"{i + 1}. {sequenceName}: {sequence}\n")
-    for j in range(3):
-        print(f"Frame +{j + 1} (Sentido direto):")
-        print("DNA: ", end= " ")
-        for bases in range(j, len(sequence),3):
-            codon = sequence[bases:bases + 3]
-            print(f"{codon}", end= " ") 
 
-        # passa sequence a partir do index j usando [j:]
-        sequenceTrans = traduction(sequence[j:],tableCodons)
+with open(Resultado, "w") as file:
+    for i in range(len(allSequence)):
+        
+        sequenceName, sequence = next(iter(allSequence[i].items()))
+        complement = getComplement(sequence)
+        
+        file.write(f"{i + 1}. {sequenceName}: {sequence}\n")
+        
+        for j in range(3):
+            file.write(f"Frame +{j + 1} (Sentido direto):\n")
+            file.write("DNA: ")
+            for bases in range(j, len(sequence), 3):
+                codon = sequence[bases:bases + 3]
+                file.write(f"{codon} ")
 
-        print(f"\n\nTradução: {sequenceTrans}\n")
-    
-    
-    print(f"Fita complementar (inversa e complementada): {complement}\n")
-    for j in range(3):
-        print(f"Frame +{j + 1} (Sentido direto):")
-        print("DNA: ", end= " ")
-        for bases in range(j, len(complement),3):
-            codon = complement[bases:bases + 3]
-            print(f"{codon}", end= " ") 
+            # passa sequence a partir do index j usando [j:]
+            sequenceTrans = traduction(sequence[j:], tableCodons)
+            file.write(f"\n\nTradução: {sequenceTrans}\n\n")
+        
+        file.write(f"Fita complementar (inversa e complementada): {complement}\n\n")
+        for j in range(3):
+            file.write(f"Frame +{j + 1} (Sentido complementar):\n")
+            file.write("DNA: ")
+            for bases in range(j, len(complement), 3):
+                codon = complement[bases:bases + 3]
+                file.write(f"{codon} ")
 
-        # passa sequence a partir do index j usando [j:]
-        complementTrans = traduction(complement[j:],tableCodons)
-
-        print(f"\n\nTradução: {complementTrans}\n")
-    
+            # passa sequence a partir do index j usando [j:]
+            complementTrans = traduction(complement[j:], tableCodons)
+            file.write(f"\n\nTradução: {complementTrans}\n")
+        file.write("\n")
+            
+        
     
 
